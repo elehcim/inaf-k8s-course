@@ -1,5 +1,5 @@
 {
-  "title": "Kubernetes 2 nodes",
+  "title": "List pods",
   "description": "Use a simple one node Kubernetes cluster and let user list all pods",
   "details": {
     "intro": {
