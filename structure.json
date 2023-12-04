@@ -1,5 +1,8 @@
 {
     "items": [
-      { "path": "course", "title": "Override title of course ONE" }
+        {
+            "path": "course",
+            "title": "Orchestration Fundamentals @ INAF 2023"
+        }
     ]
-  }
+}
