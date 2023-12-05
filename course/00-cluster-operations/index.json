@@ -1,0 +1,33 @@
+{
+  "title": "Cluster Operations",
+  "description": "Use cluster commands",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Cluster Info",
+        "text": "step1.md"
+      },
+      {
+        "title": "Cluster Nodes Show",
+        "text": "step2.md"
+      },
+      {
+        "title": "Get Namespaces",
+        "text": "step3.md"
+      },
+      {
+        "title": "Default Namespace",
+        "text": "step4.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}
