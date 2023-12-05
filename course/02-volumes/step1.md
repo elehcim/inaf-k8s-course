@@ -43,7 +43,7 @@ spec:
     image: nginx:stable-alpine
     volumeMounts:
     - name: my-vol
-      mountPath: /my-vol
+      mountPath: /usr/share/nginx/html
     ports:
     - containerPort: 80
   volumes:
