@@ -21,6 +21,16 @@ spec:
   resources:
     requests:
       storage: 100Mi
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-path-pvc2
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
 EOF
 ```{{exec}}
 
@@ -44,12 +54,23 @@ spec:
     volumeMounts:
     - name: my-vol
       mountPath: /usr/share/nginx/html
+    - name: my-vol2
+      mountPath: /etc/nginx/conf.d/default.conf
     ports:
     - containerPort: 80
+  - name: php
+    image: my-php-app:1.0.0
+    volumeMounts:
+    - name: my-vol
+      mountPath: /usr/share/nginx/html
   volumes:
   - name: my-vol
     persistentVolumeClaim:
       claimName: local-path-pvc
+  - name: my-vol2
+    persistentVolumeClaim:
+      claimName: local-path-pvc2
+  
 EOF
 ```{{exec}}
 
