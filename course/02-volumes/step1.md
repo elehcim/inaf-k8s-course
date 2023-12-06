@@ -21,6 +21,15 @@ spec:
   resources:
     requests:
       storage: 100Mi
+EOF
+```{{exec}}
+
+<br>
+
+Add second volume
+
+```
+cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
