@@ -24,31 +24,12 @@ spec:
 EOF
 ```{{exec}}
 
-<br>
-
-Add second volume
-
-```
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: local-path-pvc2
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
-EOF
-```{{exec}}
-
-> Volumes can only be as big as there is disk space on the nodes, keep them sizes low!
+> ATTENZIONE: non fare volumi superiori a 100Mi!!
 
 
 <br>
 
-Create a Pod that uses the volume
+Creare un pod che usa questo volume
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -63,30 +44,33 @@ spec:
     volumeMounts:
     - name: my-vol
       mountPath: /usr/share/nginx/html
-    - name: my-vol2
-      mountPath: /etc/nginx/conf.d/default.conf
     ports:
     - containerPort: 80
-  - name: php
-    image: my-php-app:1.0.0
-    volumeMounts:
-    - name: my-vol
-      mountPath: /usr/share/nginx/html
   volumes:
   - name: my-vol
     persistentVolumeClaim:
       claimName: local-path-pvc
-  - name: my-vol2
-    persistentVolumeClaim:
-      claimName: local-path-pvc2
-  
 EOF
 ```{{exec}}
 
 <br>
 
-Finally verify the status
+Verifica dello stato
 
 ```
-k get pod,pv,pvc
+k get pod,pvc
 ```{{exec}}
+
+<br>
+
+Identificare l'indirizzo ip del pod che espone la porta del server web
+
+```
+k get pod -o wide
+```{{exec}}
+
+Verifica dello stato del server web
+
+```
+curl http://$IPPOD
+```
