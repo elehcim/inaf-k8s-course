@@ -74,3 +74,14 @@ Verifica dello stato del server web
 ```
 curl http://$IPPOD
 ```
+
+> NOTA: la curl restituisce il codice di errore HTTP 403 perchè non abbiamo nessun file nello spazio web
+> ddd
+
+<br>
+
+Cancellare il pod
+
+```
+k delete pod pod-with-volume
+```
