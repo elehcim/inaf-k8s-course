@@ -91,6 +91,11 @@ EOF
 
 <br>
 
+Try to access to your service vie HTTP<br>
+Click on icon near minute left on the top right of the screen and click on the Traffic / Ports <br>
+wrtie port 30000 in Custom Ports end click Access.
+<br>
+
 Clean all
 
 ```
