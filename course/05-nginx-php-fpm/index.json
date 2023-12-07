@@ -1,0 +1,21 @@
+{
+  "title": "05 - NGINX-PHP-FPM",
+  "description": "Cerate your nginx+php-fpm environment",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Create your env",
+        "text": "step1.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
