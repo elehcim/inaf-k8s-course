@@ -111,6 +111,9 @@ Try to access to your service vie HTTP<br>
 Click on icon near minute left on the top right of the screen and click on the Traffic / Ports <br>
 wrtie port 30000 in Custom Ports end click Access.
 
+OR click here <br>
+[ACCESS NGINX]({{TRAFFIC_HOST1_30000}})
+
 <br>
 Scale your eniroment
 
