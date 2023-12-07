@@ -1,0 +1,21 @@
+{
+  "title": "04 - Replicaset",
+  "description": "How to use Replicaset to scale your enviroment",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Create a replicaset",
+        "text": "step1.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
