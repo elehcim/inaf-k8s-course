@@ -186,6 +186,26 @@ spec:
 EOF
 ```{{exec}}
 
+Check exposed port
+
+```
+k get pod -o wide
+```{{exec}}
+
+```
+curl http://$IPDELPOD
+```
+
+this is the result
+
+```
+<html>
+	<body>
+		<h1>Index HTML nel POD</h1>
+	</body>
+</html>
+```
+
 ```
 k delete pod pod-with-volume
 ```{{exec}}
