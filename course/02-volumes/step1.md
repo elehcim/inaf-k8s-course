@@ -84,7 +84,7 @@ Delete pod
 
 ```
 k delete pod pod-with-volume
-```
+```{{exec}}
 
 <br>
 File loading
@@ -151,6 +151,7 @@ exit
 k delete pod pod-with-volume
 ```{{exec}}
 
+Create a pod with nginx and index.html exposed on port 80
 
 ```
 cat <<EOF | kubectl apply -f -
