@@ -130,3 +130,16 @@ Scale to normal value
 k scale deployment nginx --replicas=2
 ```{{exec}}
 
+
+Clean all
+
+```
+k delete deployment nginx
+
+```
+k delete svc nginx
+```{{exec}}
+
+
+
+
