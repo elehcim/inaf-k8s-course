@@ -97,7 +97,7 @@ spec:
         - name: contents
           persistentVolumeClaim:
             claimName: local-path-pvc
-EOF                
+EOF
 ```{{exec}}
 
 
