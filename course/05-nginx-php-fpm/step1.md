@@ -7,7 +7,8 @@ k get svc
 
 <br>
 
-Create a PVC (the default StorageClass will be used):
+Create a PVC (the default StorageClass will be used),
+one for nginx configuration file and one for nginx contents
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -15,6 +16,21 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: local-path-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+EOF
+```{{exec}}
+
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-path-pvc2
 spec:
   accessModes:
     - ReadWriteOnce
@@ -153,7 +169,7 @@ spec:
         - wget
         - "-O"
         - "/var/www/html/index.php"
-        - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/index.php
+        - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/index.php
       - name: install2
         image: busybox
         volumeMounts:
@@ -163,7 +179,7 @@ spec:
         - wget
         - "-O"
         - "/etc/nginx/conf.d/default.conf"
-        - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/nginx.conf
+        - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/nginx.conf
                 
       volumes:
         - name: contents
@@ -178,7 +194,7 @@ EOF
 
 
 ```
-k get pods
+k get pods -o wide
 ```{{exec}}
 
 <br>
@@ -191,7 +207,7 @@ wrtie port 30000 in Custom Ports end click Access.
 Scale your eniroment
 
 ```
-k scale deployment nginx --replicas=4
+k scale deployment nginx phpfpm --replicas=4
 ```{{exec}}
 
 Check the Pods
@@ -203,6 +219,16 @@ k get pods
 Scale to normal value
 
 ```
-k scale deployment nginx --replicas=2
+k scale deployment nginx phpfpm --replicas=2
 ```{{exec}}
 
+
+Clean all
+
+```
+k delete deployment nginx phpfpm
+```{{exec}}
+
+```
+k delete svc nginx phpfpm
+```{{exec}}

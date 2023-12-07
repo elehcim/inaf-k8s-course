@@ -136,6 +136,8 @@ Clean all
 ```
 k delete deployment nginx
 
+```{{exec}}
+
 ```
 k delete svc nginx
 ```{{exec}}
