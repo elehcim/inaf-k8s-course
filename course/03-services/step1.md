@@ -96,7 +96,7 @@ Click on icon near minute left on the top right of the screen and click on the T
 wrtie port 30000 in Custom Ports end click Access.
 <br>
 
-[ACCESS NGINX]({{TRAFFIC_HOST1_80}})
+[ACCESS NGINX]({{TRAFFIC_HOST1_30000}})
 
 Clean all
 
