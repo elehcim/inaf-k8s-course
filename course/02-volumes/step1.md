@@ -24,12 +24,12 @@ spec:
 EOF
 ```{{exec}}
 
-> ATTENZIONE: non fare volumi superiori a 100Mi!!
+> ATTENTION: do not create volumes larger than 100M!!
 
 
 <br>
 
-Creare un pod che usa questo volume
+create a Pod that uses this volume
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -55,7 +55,7 @@ EOF
 
 <br>
 
-Verifica dello stato
+status check
 
 ```
 k get pod,pvc
@@ -63,31 +63,31 @@ k get pod,pvc
 
 <br>
 
-Identificare l'indirizzo ip del pod che espone la porta del server web
+Identify the IP address of the pod that exposes the web server port
 
 ```
 k get pod -o wide
 ```{{exec}}
 
-Verifica dello stato del server web
+check the status of the web server
 
 ```
 curl http://$IPPOD
 ```
 
-> NOTA: la curl restituisce il codice di errore HTTP 403 perchè non abbiamo nessun file nello spazio web
+> NOTE: The curl returns HTTP error code 403 because we don't have any files in the web root.
  
 
 <br>
 
-Cancellare il pod
+Delete pod
 
 ```
 k delete pod pod-with-volume
 ```
 
 <br>
-Caricare i file nel volume
+File loading
 <br>
 
 ```
@@ -129,7 +129,7 @@ EOF
 ```{{exec}}
 
 <br>
-Verifica del caricamento
+Verifing..
 
 ```
 k get pvc,storageclass
@@ -141,6 +141,10 @@ k exec -it pod-with-volume -- sh
 
 ```
 ls -la /data
+```{{exec}}
+
+```
+exit
 ```{{exec}}
 
 ```
@@ -181,3 +185,6 @@ spec:
 EOF
 ```{{exec}}
 
+```
+k delete pod pod-with-volume
+```{{exec}}
