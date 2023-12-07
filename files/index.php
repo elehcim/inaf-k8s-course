@@ -1,7 +1,7 @@
 <?php
 
 #echo $_SERVER['ADDR'];
-echo "FUNZA!!";
+echo "Index PHP nei pod";
 
 ?>
 
