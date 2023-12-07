@@ -16,6 +16,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-node"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }
