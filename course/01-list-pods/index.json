@@ -1,6 +1,6 @@
 {
   "title": "01 - List pods",
-  "description": "Use a simple one node Kubernetes cluster and let user list all pods",
+  "description": "Use a simple two nodes Kubernetes cluster and let user list all pods",
   "details": {
     "intro": {
       "text": "intro.md"
@@ -16,6 +16,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-1node"
+    "imageid": "kubernetes-kubeadm-2nodes"
   }
 }
