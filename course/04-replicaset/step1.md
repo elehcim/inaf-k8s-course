@@ -79,7 +79,7 @@ spec:
         ports:
           - containerPort: 80
         volumeMounts:
-          - mountPath: /user/share/nginx/html/
+          - mountPath: /usr/share/nginx/html/
             name: contents
       initContainers:
       - name: install
