@@ -88,6 +88,37 @@ k delete pod pod-with-volume
 
 <br>
 Caricare i file nel volume
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-volume
+spec:
+  containers:
+  - name: container
+    image: busybox
+    volumeMounts:
+    - name: my-vol
+      mountPath: /data/
+  volumes:
+  - name: my-vol
+    persistentVolumeClaim:
+      claimName: local-path-pvc
+  initContainers:
+  - name: install
+    image: busybox
+    volumeMounts:
+    - mountPath: /data/
+      name: my-vol
+    command:
+    - tar
+    - "-xvf"
+    - "/data/"
+    - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/data.tar
+EOF
+```{{exec}}
+
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -117,7 +148,7 @@ spec:
     command:
     - wget
     - "-O"
-    - "/var/www/html/index.html"
+    - "/usr/share/nginx/html/index.html"
     - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/index.html
 EOF
 ```{{exec}}
