@@ -102,41 +102,31 @@ EOF
 
 
 ```
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-  labels:
-    app: nginx
-    layer: frontend
-spec:
-  containers:
-  - name: container
-    image: nginx:stable-alpine
-    volumeMounts:
-    - name: my-vol
-      mountPath: /usr/share/nginx/html/
-    ports:
-    - containerPort: 80
-  volumes:
-  - name: my-vol
-    persistentVolumeClaim:
-      claimName: local-path-pvc
-  initContainers:
-  - name: install
-    image: busybox
-    volumeMounts:
-    - mountPath: /usr/share/nginx/html/
-      name: my-vol
-    command:
-    - wget
-    - "-O"
-    - "/usr/share/nginx/html/index.html"
-    - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/index.html
-EOF
+k get pods
 ```{{exec}}
 
 <br>
 
+Try to access to your service vie HTTP<br>
+Click on icon near minute left on the top right of the screen and click on the Traffic / Ports <br>
+wrtie port 30000 in Custom Ports end click Access.
+
+<br>
+Scale your eniroment
+
+```
+k scale deployment nginx --replicas=4
+```{{exec}}
+
+Check the Pods
+
+```
+k get pods
+```{{exec}}
+
+Scale to normal value
+
+```
+k scale deployment nginx --replicas=2
+```{{exec}}
 
