@@ -2,7 +2,7 @@
 Creating a deployment for sinlge container pod
 
 ```
-k create deployment nginx --iname=nginx
+k create deployment nginx --image=nginx
 ```{{exec}}
 
 Create a var that contain the name of the pod
