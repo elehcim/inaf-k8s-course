@@ -23,7 +23,7 @@ k logs $PODNAME
 Cerate a multi-container pod tath write some information to stdout
 
 ```
-cat <<OEF | kubectl apply -f -
+cat <<EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
 metadata:
