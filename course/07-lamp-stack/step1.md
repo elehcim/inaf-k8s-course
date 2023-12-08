@@ -20,8 +20,13 @@ EOF
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```{{exec}}
 
+Add ConfigMap for apache2
+
 ```
-helm install k8s-apache --set imagePullPolicy=Always bitnami/apache --set htdocsPVC=local-path-pvc
+k create configmap httpdconfig --from-file=https://
+
+```
+helm install k8s-apache --set imagePullPolicy=Always bitnami/apache --set htdocsPVC=local-path-pvc --set httpdConfigMap=httpdconfig
 ```{{exec}}
 
 
