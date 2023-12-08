@@ -7,7 +7,7 @@
     },
     "steps": [
       {
-        "title": "Create a pod",
+        "title": "Works with logs",
         "text": "step1.md"
       }
     ],
