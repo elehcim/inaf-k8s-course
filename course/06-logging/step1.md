@@ -23,6 +23,7 @@ k logs $PODNAME
 Cerate a multi-container pod tath write some information to stdout
 
 ```
+cat <<OEF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -46,6 +47,7 @@ spec:
       - name: container2
         image: busybox
         args: [/bin/sh, -c, 'while true; do echo "$(date)": $(hostname): container2; sleep 1; done']
+EOF
 ```{{exec}}
 
 Create a var that contain the name of the pod
@@ -59,7 +61,7 @@ echo $PODNAME
 k logs $PODNAME
 ```{{exec}}
 
-Let's get the logs from multi-container pod.... the will trhow an error dan ask us to define wich container
+Lets get the logs from multi-container pod.... the will trhow an error dan ask us to define wich container
 
 ```
 k logs $PODNAME -c container1
