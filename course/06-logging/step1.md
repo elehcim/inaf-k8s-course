@@ -75,9 +75,28 @@ If we need to follow a log, we can do that...helpful in debugging real time issu
 single and multi-container pods
 
 ```
-k logs $PODNAME -c contanier1 --follow
-ctrl+c
+k logs $PODNAME -c container1 --follow
 ```{{exec}}
+
+CTRL+C to escape
+
+If you have a lot of pod you can select only pods you want by apply a selector
+
+```
+k get pods --selector app=loggingdemo
+```{{exec}}
+
+Put your logs into a file
+
+```
+kubectl logs --selector app=loggingdemo --all-containers > allpods.txt
+```{{exec}}
+
+```
+cat allpods.txt
+```{{exec}}
+
+
 
 
 
