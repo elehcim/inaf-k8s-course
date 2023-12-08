@@ -23,8 +23,8 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 Create httpd.conf file
 
 ```
-cat <<EOF | httpd.conf -
-abebe abebbe
+cat <<EOF>> httpd.conf -
+abebe abebe
 EOF
 ```{{exec}}
 
@@ -32,6 +32,7 @@ Add ConfigMap for apache2
 
 ```
 k create configmap httpdconfig --from-file=httpd.conf
+```{{exec}}
 
 ```
 helm install k8s-apache --set imagePullPolicy=Always bitnami/apache --set htdocsPVC=local-path-pvc --set httpdConfigMap=httpdconfig
