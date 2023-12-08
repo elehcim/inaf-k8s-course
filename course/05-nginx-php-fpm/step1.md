@@ -206,6 +206,7 @@ wrtie port 30000 in Custom Ports end click Access.
 OR click here <br>
 [ACCESS NGINX]({{TRAFFIC_HOST1_30000}})
 
+Check how the ip of the pod change in web page.
 
 <br>
 Scale your eniroment
