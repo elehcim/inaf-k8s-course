@@ -11,15 +11,15 @@
         "text": "step1.md"
       },
       {
-        "title": "Cluster Nodes Show",
+        "title": "Show cluster nodes",
         "text": "step2.md"
       },
       {
-        "title": "Get Namespaces",
+        "title": "Cluster configuration",
         "text": "step3.md"
       },
       {
-        "title": "Default Namespace",
+        "title": "Namespaces",
         "text": "step4.md"
       }
     ],
