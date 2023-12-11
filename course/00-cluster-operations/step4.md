@@ -18,16 +18,12 @@ k create namespace my-namespace
 k get namespaces
 ```{{execute}}
 
-To change the current namespace, run:
-```
-k config set-context --current --namespace=<namespace-name>
-```{{execute}}
 
-Let's change the current namespace to `my-namespace`:
-
+To change the current namespace to the newly created one, run:
 ```
 k config set-context --current --namespace=my-namespace
 ```{{execute}}
+
 
 ```
 k get namespaces
