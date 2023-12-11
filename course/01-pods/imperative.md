@@ -19,10 +19,14 @@ hostname
 
 Exit the shell with `exit`{{execute}}.
 The container terminated and the pod is now in the `Completed` state.
-After a little while the controlplane will see that the pod is not running anymore and will try to recreate it.
-
 You can check the status of the pod with the following command:
 
+```
+kubectl get pods
+```{{exec}}
+
+After a little while the controlplane will see that the pod is not running anymore and will try to recreate it.
+You can check the status of the pod again, and check the number of RESTARTS for the pod:
 ```
 kubectl get pods
 ```{{exec}}
@@ -32,11 +36,6 @@ Once the pod is running you can attach to the container with:
 kubectl attach my-first-pod -c my-first-pod -i -t
 ```{{execute}}
 
-
-Check the number of RESTARTS for the pod:
-```
-kubectl get pods
-```{{exec}}
 
 Delete the pod:
 ```
