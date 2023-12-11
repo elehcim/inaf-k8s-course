@@ -14,7 +14,11 @@ Declare a pod with the following specifications:
 
 ```
 kubectl run -it my-first-pod --image=busybox -- sh
+```{{exec}}
+
 ```
+kubectl get pods
+```{{exec}}
 
 #### Task 2: Interact with the pod
 
