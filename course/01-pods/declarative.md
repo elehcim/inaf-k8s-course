@@ -15,6 +15,10 @@ spec:
 EOF
 ```{{exec}}
 
+```
+kubectl get pods
+```{{exec}}
+
 Start a shell in the newly created pod:
 ```
 kubectl exec -it my-first-pod-from-manifest -- sh

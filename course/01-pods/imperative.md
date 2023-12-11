@@ -37,3 +37,8 @@ Check the number of RESTARTS for the pod:
 ```
 kubectl get pods
 ```{{exec}}
+
+Delete the pod:
+```
+kubectl delete pod my-first-pod
+```{{execute}}
