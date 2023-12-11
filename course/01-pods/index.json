@@ -1,14 +1,18 @@
 {
   "title": "01 Pods",
-  "description": "Use a simple one node Kubernetes cluster and let user interact with all pods",
+  "description": "Create and interact with pods",
   "details": {
     "intro": {
       "text": "intro.md"
     },
     "steps": [
       {
-        "title": "List all pods",
-        "text": "step1.md"
+        "title": "Imperative approach",
+        "text": "imperative.md"
+      },
+      {
+        "title": "Declarative approach",
+        "text": "declarative.md"
       }
     ],
     "finish": {
