@@ -1,13 +1,13 @@
 {
-  "title": "01 - List pods",
-  "description": "Use a simple two nodes Kubernetes cluster and let user list all pods",
+  "title": "08 Jobs",
+  "description": "Use a simple one node Kubernetes cluster and let user launch jobs on it.",
   "details": {
     "intro": {
       "text": "intro.md"
     },
     "steps": [
       {
-        "title": "List all pods",
+        "title": "Launch jobs",
         "text": "step1.md"
       }
     ],
@@ -16,6 +16,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-2nodes"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }
