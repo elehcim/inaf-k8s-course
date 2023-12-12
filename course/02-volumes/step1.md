@@ -1,5 +1,11 @@
+Pods are ephemereal: data they store is lost when they are deleted.
 
-The local-path-provisioner StorageClass has been installed, check with:
+Kubernetes provides an abstraction to store data in a persistent way: the PersistentVolume.
+The kubernetes administrator can create PersistentVolumes and users can ask for PersistentVolumeClaims in case thay need to store data.
+
+In Killercoda we use the local-path-provisioner StorageClass to create PersistentVolumes on the fly.
+A storage class provides a way for administrators to describe the "classes" of storage they offer.
+Different classes might map to quality-of-service levels, or to backup policies, or to arbitrary policies determined by the cluster administrators.
 
 ```
 k get storageclass
@@ -7,6 +13,7 @@ k get storageclass
 
 <br>
 
+### Create a PersistentVolumeClaim (PVC)
 Create a PVC (the default StorageClass will be used):
 
 ```
@@ -26,10 +33,14 @@ EOF
 
 > ATTENTION: do not create volumes larger than 100M!!
 
+Check the status of the PV and PVC with:
+```
+k get pv,pvc
+```{{exec}}
 
-<br>
+### Let the pod mount the PVC
 
-create a Pod that uses this volume
+Create a Pod that uses this volume
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -53,15 +64,14 @@ spec:
 EOF
 ```{{exec}}
 
-<br>
 
-status check
+Check the status with:
 
 ```
 k get pod,pvc
 ```{{exec}}
 
-<br>
+
 
 Identify the IP address of the pod that exposes the web server port
 
