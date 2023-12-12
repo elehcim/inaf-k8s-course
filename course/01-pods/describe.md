@@ -12,7 +12,7 @@ kubectl describe pod my-first-pod-from-manifest
 You can get the manifest file kubernetes has stored with all the resource metadata with the following command:
 
 ```
-kubectl get pod my-first-pod-from-manifest -o yaml'
+kubectl get pod my-first-pod-from-manifest -o yaml
 ```{{execute}}
 
 You can also get single values from the manifest using the `jsonpath` format.
