@@ -1,17 +1,10 @@
-Pods are ephemereal: data they store is lost when they are deleted.
-
-Kubernetes provides an abstraction to store data in a persistent way: the PersistentVolume.
-The kubernetes administrator can create PersistentVolumes and users can ask for PersistentVolumeClaims in case thay need to store data.
-
-In Killercoda we use the local-path-provisioner StorageClass to create PersistentVolumes on the fly.
+In Killercoda the local-path-provisioner StorageClass is used to create PersistentVolumes on the fly.
 A storage class provides a way for administrators to describe the "classes" of storage they offer.
 Different classes might map to quality-of-service levels, or to backup policies, or to arbitrary policies determined by the cluster administrators.
 
 ```
 k get storageclass
 ```{{exec}}
-
-<br>
 
 ### Create a PersistentVolumeClaim (PVC)
 Create a PVC (the default StorageClass will be used):
@@ -72,7 +65,6 @@ k get pod,pvc
 ```{{exec}}
 
 
-
 Identify the IP address of the pod that exposes the web server port
 
 ```
@@ -82,13 +74,13 @@ k get pod -o wide
 To save the IP address of the pod in a variable:
 
 ```
-IPPOD=$(k get pod/pod-with-volume -o jsonpath='{.items[0].status.podIP}')
+export POD_IP=$(k get pod/pod-with-volume -o jsonpath='{.items[0].status.podIP}')
 ```{{execute}}
 
 check the status of the web server
 
 ```
-curl http://$IPPOD
+curl http://$POD_IP
 ```
 
 > NOTE: The curl returns HTTP error code 403 because we don't have any files in the web root.

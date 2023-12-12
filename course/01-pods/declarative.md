@@ -1,5 +1,5 @@
 ### Declarative approach
-You can use a manifest file to declare the desired state of the pod, and then apply it to the cluster.
+You can use a __manifest file__ to declare the desired state of the pod, and then apply it to the cluster.
 
 Declare a pod with the following specifications:
 ```

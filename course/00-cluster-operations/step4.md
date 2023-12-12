@@ -24,8 +24,9 @@ To change the current namespace to the newly created one, run:
 k config set-context --current --namespace=my-namespace
 ```{{execute}}
 
+See the current context now, it specifies the namespace.
 
 ```
-k get namespaces
-```{{execute}}
+k config view
+```{{execute}} 
 
