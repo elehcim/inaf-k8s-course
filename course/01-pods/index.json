@@ -13,6 +13,10 @@
       {
         "title": "Declarative approach",
         "text": "declarative.md"
+      },
+      {
+        "title": "Describe pods",
+        "text": "describe.md"
       }
     ],
     "finish": {
