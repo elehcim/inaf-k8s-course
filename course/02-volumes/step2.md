@@ -8,7 +8,7 @@ cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-with-volume
+  name: pod-with-data
 spec:
   containers:
   - name: container
@@ -44,12 +44,12 @@ EOF
 Verify
 
 ```
-k get pvc,storageclass
+k get pod,pvc
 ```{{exec}}
 
 Get into the pod
 ```
-k exec -it pod-with-volume -- sh
+k exec -it pod-with-data -- sh
 ```{{exec}}
 
 ```
@@ -61,5 +61,5 @@ exit
 ```{{exec}}
 
 ```
-k delete pod pod-with-volume
+k delete pod pod-with-data
 ```{{exec}}

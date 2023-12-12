@@ -6,7 +6,7 @@ cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-with-volume
+  name: pod-with-html
 spec:
   containers:
   - name: container
@@ -41,19 +41,18 @@ k get pod -o wide
 ```{{exec}}
 
 ```
-curl http://$IPDELPOD
+export POD_IP=$(k get pod/pod-with-volume -o jsonpath='{.status.podIP}')
+echo $POD_IP
+```{{execute}}
+
+check the status of the web server
+
 ```
+curl http://$POD_IP
+```{{execute}}
 
 this is the result
 
 ```
-<html>
-	<body>
-		<h1>Index HTML nel POD</h1>
-	</body>
-</html>
-```
-
-```
-k delete pod pod-with-volume
+k delete pod pod-with-html
 ```{{exec}}
