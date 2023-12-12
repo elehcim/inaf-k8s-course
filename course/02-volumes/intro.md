@@ -1,4 +1,1 @@
-
-<br>
-
-How to use PV/PVC volumes in Kubernetes environments
+How to use persistent volumes in Kubernetes environment

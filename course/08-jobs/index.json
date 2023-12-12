@@ -1,6 +1,6 @@
 {
-  "title": "08 Jobs",
-  "description": "Use a simple one node Kubernetes cluster and let user launch jobs on it.",
+  "title": "08 - Jobs",
+  "description": "Launch jobs on a cluster.",
   "details": {
     "intro": {
       "text": "intro.md"
@@ -16,6 +16,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-1node"
+    "imageid": "kubernetes-kubeadm-2node"
   }
 }

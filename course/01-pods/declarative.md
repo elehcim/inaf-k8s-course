@@ -16,6 +16,8 @@ spec:
 EOF
 ```{{exec}}
 
+> NOTE: we had to add a command to the container to keep it running, otherwise it would have exited immediately.
+
 ```
 kubectl get pods
 ```{{exec}}
@@ -24,3 +26,5 @@ Start a shell in the newly created pod:
 ```
 kubectl exec -it my-first-pod-from-manifest -- sh
 ```{{exec}}
+
+> NOTE: the `kubectl exec` command is used to run a command in a container of a pod. The `--` is used to separate the `kubectl` command from the command to run in the container.
