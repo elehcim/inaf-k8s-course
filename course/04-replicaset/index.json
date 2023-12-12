@@ -1,13 +1,13 @@
 {
-  "title": "04 - Replicaset",
-  "description": "How to use Replicaset to scale your enviroment",
+  "title": "04 - Deployments",
+  "description": "How to use Deployments to scale your enviroment",
   "details": {
     "intro": {
       "text": "intro.md"
     },
     "steps": [
       {
-        "title": "Create a replicaset",
+        "title": "Create a Deployments",
         "text": "step1.md"
       }
     ],
