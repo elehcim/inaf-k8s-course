@@ -79,6 +79,12 @@ Identify the IP address of the pod that exposes the web server port
 k get pod -o wide
 ```{{exec}}
 
+To save the IP address of the pod in a variable:
+
+```
+IPPOD=$(k get pod/pod-with-volume -o jsonpath='{.items[0].status.podIP}')
+```{{execute}}
+
 check the status of the web server
 
 ```
@@ -96,9 +102,10 @@ Delete pod
 k delete pod pod-with-volume
 ```{{exec}}
 
-<br>
-File loading
-<br>
+### File loading
+We'll use the initContainers to download and uncompress a file in the volume.
+InitContainers are containers that run before the main container starts.
+They are used to perform operations that are needed before the main container starts.
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -138,13 +145,13 @@ spec:
 EOF
 ```{{exec}}
 
-<br>
-Verifing..
+Verify
 
 ```
 k get pvc,storageclass
 ```{{exec}}
 
+Get into the pod
 ```
 k exec -it pod-with-volume -- sh
 ```{{exec}}
@@ -156,65 +163,6 @@ ls -la /data
 ```
 exit
 ```{{exec}}
-
-```
-k delete pod pod-with-volume
-```{{exec}}
-
-Create a pod with nginx and index.html exposed on port 80
-
-```
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-with-volume
-spec:
-  containers:
-  - name: container
-    image: nginx:stable-alpine
-    volumeMounts:
-    - name: my-vol
-      mountPath: /usr/share/nginx/html/
-    ports:
-    - containerPort: 80
-  volumes:
-  - name: my-vol
-    persistentVolumeClaim:
-      claimName: local-path-pvc
-  initContainers:
-  - name: install
-    image: busybox
-    volumeMounts:
-    - mountPath: /usr/share/nginx/html/
-      name: my-vol
-    command:
-    - wget
-    - "-O"
-    - "/usr/share/nginx/html/index.html"
-    - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/index.html
-EOF
-```{{exec}}
-
-Check exposed port
-
-```
-k get pod -o wide
-```{{exec}}
-
-```
-curl http://$IPDELPOD
-```
-
-this is the result
-
-```
-<html>
-	<body>
-		<h1>Index HTML nel POD</h1>
-	</body>
-</html>
-```
 
 ```
 k delete pod pod-with-volume
