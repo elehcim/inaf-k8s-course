@@ -5,6 +5,10 @@ cat ~/.kube/config
 ```{{execute}}
 
 It shows the clusters, users and contexts available.
+A more user-friendly way to see the configuration is:
+```
+k config view
+```{{execute}} 
 
 A kubernetes context is a group of access parameters to your cluster, including:
 - a Kubernetes cluster (`kubernetes`)
