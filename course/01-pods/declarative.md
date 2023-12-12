@@ -12,7 +12,7 @@ spec:
   containers:
   - name: my-first-pod-from-manifest
     image: busybox
-    command: ["/bin/sh", "-c", "while true; do echo \"$(date) hello from $(hostname)\"; sleep 10; done"]
+    command: ["/bin/sh", "-c", "while true; do echo \"hello from $(hostname)\"; sleep 10; done"]
 EOF
 ```{{exec}}
 
