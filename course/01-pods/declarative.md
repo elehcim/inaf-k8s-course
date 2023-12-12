@@ -12,7 +12,7 @@ spec:
   containers:
   - name: my-first-pod-from-manifest
     image: busybox
-    command: ["/bin/sh", "-c", "while true; do echo \"hello from $(hostname)\"; sleep 10; done"]
+    command: ["/bin/sh", "-c", "while true; do echo \"$(date) hello from $(hostname)\"; sleep 10; done"]
 EOF
 ```{{exec}}
 
@@ -20,6 +20,16 @@ EOF
 
 ```
 kubectl get pods
+```{{exec}}
+
+A trick to wait until the pod is created, is to use the command:
+```
+kubectl wait --timeout=120s --for=condition=Ready pod/my-first-pod-from-manifest
+```{{exec}}
+
+Let's also check the logs of the pod:
+```
+kubectl logs my-first-pod-from-manifest
 ```{{exec}}
 
 Start a shell in the newly created pod:
