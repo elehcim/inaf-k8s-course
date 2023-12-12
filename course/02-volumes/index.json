@@ -11,8 +11,12 @@
         "text": "step1.md"
       },
       {
-        "title": "Create a usable nginx server",
+        "title": "File loading",
         "text": "step2.md"
+      },
+      {
+        "title": "Create a usable nginx server",
+        "text": "step3.md"
       }
     ],
     "finish": {
@@ -20,6 +24,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-2nodes"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }

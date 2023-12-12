@@ -1,5 +1,7 @@
-
-Create a pod with nginx and index.html exposed on port 80
+### File loading
+We'll use the initContainers to download and uncompress a file in the volume.
+InitContainers are containers that run before the main container starts.
+They are used to perform operations that are needed before the main container starts.
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -10,49 +12,53 @@ metadata:
 spec:
   containers:
   - name: container
-    image: nginx:stable-alpine
+    image: busybox
     volumeMounts:
     - name: my-vol
-      mountPath: /usr/share/nginx/html/
-    ports:
-    - containerPort: 80
+      mountPath: /data/
+    command: ['sh', '-c', 'sleep infinity']
   volumes:
   - name: my-vol
     persistentVolumeClaim:
       claimName: local-path-pvc
   initContainers:
-  - name: install
+  - name: download
     image: busybox
     volumeMounts:
-    - mountPath: /usr/share/nginx/html/
+    - mountPath: /data/
       name: my-vol
     command:
     - wget
     - "-O"
-    - "/usr/share/nginx/html/index.html"
-    - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/index.html
+    - "/data/data.tar"
+    - https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/data.tar
+  - name: uncompress
+    image: busybox
+    volumeMounts:
+    - mountPath: /data/
+      name: my-vol
+    command: ['sh', '-c', 'tar -xvf /data/data.tar -C /data/']
 EOF
 ```{{exec}}
 
-Check exposed port
+Verify
 
 ```
-k get pod -o wide
+k get pvc,storageclass
+```{{exec}}
+
+Get into the pod
+```
+k exec -it pod-with-volume -- sh
 ```{{exec}}
 
 ```
-curl http://$IPDELPOD
-```
-
-this is the result
+ls -la /data
+```{{exec}}
 
 ```
-<html>
-	<body>
-		<h1>Index HTML nel POD</h1>
-	</body>
-</html>
-```
+exit
+```{{exec}}
 
 ```
 k delete pod pod-with-volume
