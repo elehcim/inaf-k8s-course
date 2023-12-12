@@ -5,12 +5,18 @@ When used with a pod, it provides information about the pod's current state, eve
 
 To describe a pod, you can use the following command:
 ```
-kubectl describe pod my-first-pod
+kubectl describe pod my-first-pod-from-manifest
 ```{{execute}}
 
 ## Explore manifests
+You can get the manifest file kubernetes has stored with all the resource metadata with the following command:
 
+```
+kubectl get pod my-first-pod-from-manifest -o yaml'
+```{{execute}}
+
+You can also get single values from the manifest using the `jsonpath` format.
 For example to get the ip of a pod you can use the following command:
 ```
-kubectl get pod my-first-pod -o jsonpath='{.status.podIP}'
+kubectl get pod my-first-pod-from-manifest -o jsonpath='{.status.podIP}'
 ```{{execute}}
