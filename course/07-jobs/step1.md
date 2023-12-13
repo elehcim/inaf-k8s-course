@@ -12,6 +12,7 @@ metadata:
 spec:
   parallelism: 3  # Set the number of parallel pods to run for the job
   completions: 10  # Set the total number of pods to create for the job
+  completionMode: Indexed
   template:
     spec:
       restartPolicy: Never
