@@ -15,18 +15,6 @@ spec:
   template:
     spec:
       restartPolicy: Never
-      initContainers:
-      - name: 'format-input-data'
-        image: 'docker.io/library/bash'
-        command:
-        - "bash"
-        - "-c"
-        - |
-          items=(foo bar baz qux xyz)
-          echo ${items[$JOB_COMPLETION_INDEX]} > /input/data.txt
-        volumeMounts:
-        - mountPath: /input
-          name: input-volume
       containers:
       - name: data-processing-container
         image: python
