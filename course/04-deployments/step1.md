@@ -1,13 +1,6 @@
 
-Adding service NodePort to Pod
+Let's repeat the same example, but using a Deployment.
 
-```
-k get svc
-```{{exec}}
-
-<br>
-
-Create a PVC (the default StorageClass will be used):
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -21,19 +14,9 @@ spec:
   resources:
     requests:
       storage: 100Mi
-EOF
-```{{exec}}
-
-> ATTENTION: do not create volumes larger than 100M!!
-
-<br>
-
-Create a Service NodePort
-
-```
-cat <<EOF | kubectl apply -f -
-kind: Service 
+---
 apiVersion: v1 
+kind: Service 
 metadata:
   name: nginx
   labels:
@@ -51,7 +34,7 @@ EOF
 ```{{exec}}
 
 
-create a Pod that uses this volume and this NodePort
+create a Deployment that uses this volume and this NodePort
 
 
 ```
