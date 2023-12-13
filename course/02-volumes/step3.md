@@ -41,7 +41,7 @@ k get pod -o wide
 ```{{exec}}
 
 ```
-export POD_IP=$(k get pod/pod-with-volume -o jsonpath='{.status.podIP}')
+export POD_IP=$(k get pod/pod-with-html -o jsonpath='{.status.podIP}')
 echo $POD_IP
 ```{{execute}}
 
