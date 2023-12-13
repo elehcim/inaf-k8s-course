@@ -1,4 +1,4 @@
 
 <br>
 
-How to use Services with Pod
+How to check logs in the pods

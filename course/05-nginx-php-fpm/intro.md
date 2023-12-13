@@ -1,4 +1,1 @@
-
-<br>
-
-How to use Services with Pod
+Install nginx php-fpm stack
