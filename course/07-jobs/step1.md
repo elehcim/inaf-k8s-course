@@ -81,8 +81,42 @@ metadata:
   name: my-script
 data:
   data_processing_script.py: |+
-    import os, sys
-    job_completion_index = sys.argv[1]
+    import os
     print("Hello from data processing script!")
-    print(f"JOB_COMPLETION_INDEX: {job_completion_index}")
+    print(f"JOB_COMPLETION_INDEX: {os.getenv("JOB_COMPLETION_INDEX")}")
 ```{{copy}}
+
+
+Save all the above YAML in a file called `job.yaml`. Paste the config map below the job definition, we are using the yaml separator `---`
+
+Apply the file with:
+
+```
+k apply -f job.yaml
+```{{execute}}
+
+Check the status of the job with:
+
+```
+k get job
+```{{execute}}
+
+So, a group of 10 pods have been created, each one running the data processing script with a different input.
+To list the pods associated with the job, run:
+
+```
+k get pods --selector=job-name=data-processing-job
+```{{execute}}
+
+You can inspect the logs of the pods with:
+
+```
+k logs -l job-name=data-processing-job
+```{{execute}}
+
+
+To cleanup the job, run:
+
+```
+k delete -f job.yaml
+```{{execute}}
