@@ -1,12 +1,6 @@
 
 Adding service NodePort to Pod
 
-```
-k get svc
-```{{exec}}
-
-<br>
-
 Create a PVC (the default StorageClass will be used):
 
 ```
@@ -28,7 +22,7 @@ EOF
 
 <br>
 
-Create a Service NodePort
+Create a Service of type NodePort
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -50,8 +44,12 @@ spec:
 EOF
 ```{{exec}}
 
+```
+k get svc
+```{{exec}}
 
-create a Pod that uses this volume and this NodePort
+
+### Create a Pod that uses this volume and this NodePort
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -89,7 +87,10 @@ spec:
 EOF
 ```{{exec}}
 
-<br>
+```
+k get pod -o wide
+```{{exec}}
+
 
 Try to access to your service vie HTTP<br>
 Click on icon near minute left on the top right of the screen and click on the Traffic / Ports <br>
