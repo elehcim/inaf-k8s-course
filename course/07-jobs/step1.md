@@ -114,6 +114,7 @@ You can inspect the logs of the pods with:
 k logs -l job-name=data-processing-job
 ```{{execute}}
 
+> Note: the `-l` flag is used to filter the pods by label.
 
 To cleanup the job, run:
 
