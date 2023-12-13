@@ -15,8 +15,8 @@ spec:
     requests:
       storage: 100Mi
 ---
-apiVersion: v1 
-kind: Service 
+apiVersion: v1
+kind: Service
 metadata:
   name: nginx
   labels:
@@ -34,8 +34,7 @@ EOF
 ```{{exec}}
 
 
-create a Deployment that uses this volume and this NodePort
-
+create a Deployment that uses this volume and the service we just created:
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -83,22 +82,30 @@ spec:
 EOF
 ```{{exec}}
 
-
+Kubernetes is managing the set of pods for us. We can see the pods that were created by the deployment:
 ```
 k get pods
 ```{{exec}}
 
+To get the deployments instead:
+```
+k get deployments -o wide
+```{{exec}}
+
+
+Labels will be used to select the pods that belong to this deployment.
+
+
+Try to access to your service via HTTP.
+
+Click on the icon in the top right corner (near the time left) of the screen and click on the Traffic / Ports.
+
+Write port 30000 in Custom Ports end click Access.
+
+OR click here: [ACCESS NGINX]({{TRAFFIC_HOST1_30000}})
+
 <br>
-
-Try to access to your service vie HTTP<br>
-Click on icon near minute left on the top right of the screen and click on the Traffic / Ports <br>
-wrtie port 30000 in Custom Ports end click Access.
-
-OR click here <br>
-[ACCESS NGINX]({{TRAFFIC_HOST1_30000}})
-
-<br>
-Scale your eniroment
+## Scale your enviroment
 
 ```
 k scale deployment nginx --replicas=4
@@ -121,13 +128,6 @@ Clean all
 
 ```
 k delete deployment nginx
-
-```{{exec}}
-
-```
 k delete svc nginx
+k delete pvc local-path-pvc
 ```{{exec}}
-
-
-
-
