@@ -48,6 +48,7 @@ EOF
 k get svc
 ```{{exec}}
 
+The `selector` is the key point here: from this you link the service to the pods.
 
 ### Create a Pod that uses this volume and this NodePort
 
@@ -58,7 +59,7 @@ kind: Pod
 metadata:
   name: nginx
   labels:
-    app: nginx
+    app: nginx  # Label used by service to select the pod
     layer: frontend
 spec:
   containers:
