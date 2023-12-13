@@ -14,6 +14,7 @@ spec:
   completions: 10  # Set the total number of pods to create for the job
   template:
     spec:
+      restartPolicy: Never
       initContainers:
       - name: 'format-input-data'
         image: 'docker.io/library/bash'
@@ -25,7 +26,7 @@ spec:
           echo ${items[$JOB_COMPLETION_INDEX]} > /input/data.txt
         volumeMounts:
         - mountPath: /input
-          name: input
+          name: input-volume
       containers:
       - name: data-processing-container
         image: python
@@ -38,7 +39,6 @@ spec:
           mountPath: /output
         - name: my-script
           mountPath: /scripts
-          mode: 777
       volumes:
       - name: input-volume
         persistentVolumeClaim:
@@ -46,6 +46,9 @@ spec:
       - name: output-volume
         persistentVolumeClaim:
           claimName: output-pvc
+      - name: my-script
+        configMap:
+          name: my-script
   backoffLimit: 4  # The backoffLimit specifies the maximum number of retries before considering a Job as failed
 ---
 apiVersion: v1
@@ -69,7 +72,7 @@ spec:
   resources:
     requests:
       storage: 100Mi
-```
+```{{copy}}
 
 Note on PVC access modes:
 
