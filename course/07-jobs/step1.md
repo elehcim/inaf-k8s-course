@@ -20,7 +20,7 @@ spec:
       - name: data-processing-container
         image: python
         command: ["python"]
-        args: ["/scripts/data_processing_script.py", "$(JOB_COMPLETION_INDEX)"]  # Pass the job index as an argument to the processing script
+        args: ["/scripts/data_processing_script.py"]  # Pass the job index as an env var to the processing script
         volumeMounts:
         - name: input-volume
           mountPath: /input
