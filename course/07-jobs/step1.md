@@ -95,5 +95,5 @@ data:
     import os, sys
     job_completion_index = sys.argv[1]
     print("Hello from data processing script!")
-    print(f"JOB_COMPLETION_INDEX: {job_completion_index}"))
+    print(f"JOB_COMPLETION_INDEX: {job_completion_index}")
 ```{{copy}}
