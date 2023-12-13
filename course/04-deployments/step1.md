@@ -34,7 +34,7 @@ EOF
 ```{{exec}}
 
 
-create a Deployment that uses this volume and the service we just created:
+Let's create a Deployment that uses this volume and the service we just created:
 
 ```
 cat <<EOF | kubectl apply -f -

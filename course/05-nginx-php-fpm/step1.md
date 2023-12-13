@@ -44,7 +44,7 @@ EOF
 
 <br>
 
-Create a Service NodePort
+Create the nginx service of type NodePort:
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -88,8 +88,8 @@ spec:
 EOF
 ```{{exec}}
 
-<br>
-Create Service phpfpm
+
+Create the deployments phpfpm
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -125,7 +125,7 @@ spec:
 EOF
 ```{{exec}}
 
-create a Pod that uses this volume and this NodePort
+Create the deployments nginx
 
 
 ```
@@ -155,7 +155,6 @@ spec:
         volumeMounts:
           - mountPath: /var/www/html/
             name: contents
-                
           - name: nginx-config
             mountPath: /etc/nginx/conf.d/default.conf
             subPath: default.conf
@@ -185,7 +184,6 @@ spec:
         - name: contents
           persistentVolumeClaim:
             claimName: local-path-pvc
-                
         - name: nginx-config
           persistentVolumeClaim:
             claimName: local-path-pvc2
