@@ -57,7 +57,7 @@ metadata:
   name: input-pvc
 spec:
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce # The appropriate model would be a ReadOnlyMany, but unfortunately "local-path": NodePath only supports ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
@@ -68,10 +68,11 @@ metadata:
   name: output-pvc
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
+---
 ```{{copy}}
 
 Note on PVC access modes:
@@ -91,11 +92,8 @@ metadata:
   name: my-script
 data:
   data_processing_script.py: |+
-    import os
+    import os, sys
+    job_completion_index = sys.argv[1]
     print("Hello from data processing script!")
-    print("JOB_COMPLETION_INDEX: {}".format(os.environ["JOB_COMPLETION_INDEX"]))
-    print("INPUT_FILE: {}".format(os.environ["INPUT_FILE"]))
-    print("OUTPUT_FILE: {}".format(os.environ["OUTPUT_FILE"]))
-    print("DATA: {}".format(open(os.environ["INPUT_FILE"]).read()))
-    open(os.environ["OUTPUT_FILE"], "w").write("Hello from data processing script!")
-```
+    print(f"JOB_COMPLETION_INDEX: {job_completion_index}"))
+```{{copy}}
