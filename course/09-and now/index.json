@@ -1,0 +1,21 @@
+{
+  "title": "09 - And now... what's next?",
+  "description": "resources for k8s",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Exercise",
+        "text": "step1.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}
