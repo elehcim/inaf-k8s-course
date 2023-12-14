@@ -7,7 +7,7 @@
     },
     "steps": [
       {
-        "title": "Exercise",
+        "title": "Try to use helm",
         "text": "step1.md"
       }
     ],
