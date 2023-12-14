@@ -7,3 +7,6 @@ Kubernetes package manager: [Helm](https://helm.sh/)
 The Hub for kubernetes charts: [ArtifactHub](https://artifacthub.io/)
 
 Always chech the CNCF landscape: [CNCF landscape](https://landscape.cncf.io/)
+
+
+Kubernetes for CI/CD: (FluxCD)[fluxcd.io]
