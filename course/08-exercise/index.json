@@ -1,14 +1,26 @@
 {
-  "title": "08 - Excercise",
-  "description": "Do it by yourself",
+  "title": "08 - Exercise",
+  "description": "Create a deployments for a web server with volume and download html files from github",
   "details": {
     "intro": {
       "text": "intro.md"
     },
     "steps": [
       {
-        "title": "---",
+        "title": "Create a volume named vol-contents",
         "text": "step1.md"
+      },
+      {
+        "title": "Create a Pod named my-web-server and load file into the web root from this URL:<br> https://raw.githubusercontent.com/elehcim/inaf-k8s-course/main/files/slide.tar and untar",
+        "text": "step2.md"
+      },
+      {
+        "title": "Create a NodePort for access to port 30000.",
+        "text": "step3.md"
+      },
+      {
+        "title": "Test it by click at this URL [ACCESS NGINX]({{TRAFFIC_HOST1_30000}})",
+        "text": "step3.md"
       }
     ],
     "finish": {
@@ -16,6 +28,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-2nodes"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }
