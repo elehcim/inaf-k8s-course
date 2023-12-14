@@ -1,5 +1,4 @@
-
-Adding service NodePort to Pod
+# Adding service NodePort to Pod
 
 Create a PVC (the default StorageClass will be used):
 
@@ -17,10 +16,6 @@ spec:
       storage: 100Mi
 EOF
 ```{{exec}}
-
-> ATTENTION: do not create volumes larger than 100M!!
-
-<br>
 
 Create a Service of type NodePort
 
@@ -45,7 +40,7 @@ EOF
 ```{{exec}}
 
 ```
-k get svc
+k get svc -o wide
 ```{{exec}}
 
 The `selector` is the key point here: from this you link the service to the pods.

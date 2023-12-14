@@ -5,7 +5,7 @@ Creating a deployment for sinlge container pod
 k create deployment nginx --image=nginx
 ```{{exec}}
 
-Create a var that contain the name of the pod
+Create a var that contains the name of the pod
 ```
 PODNAME=$(k get pods -l app=nginx -o jsonpath='{ .items[0].metadata.name }')
 ```{{exec}}
@@ -20,7 +20,7 @@ k logs $PODNAME
 
 <br>
 
-Cerate a multi-container pod tath write some information to stdout
+Create a multi-container pod that writes some information to stdout
 
 ```
 cat <<EOF | kubectl apply -f -
@@ -57,12 +57,13 @@ PODNAME=$(kubectl get pods -l app=loggingdemo -o jsonpath='{ .items[0].metadata.
 echo $PODNAME
 ```{{exec}}
 
+Lets get the logs from multi-container pod... It will default to the first container
+
 ```
 k logs $PODNAME
 ```{{exec}}
 
-Lets get the logs from multi-container pod.... the will trhow an error dan ask us to define wich container
-
+Let us explicitly ask for a container:
 ```
 k logs $PODNAME -c container1
 ```{{exec}}
@@ -71,8 +72,8 @@ k logs $PODNAME -c container1
 k logs $PODNAME -c container2
 ```{{exec}}
 
-If we need to follow a log, we can do that...helpful in debugging real time issues This works for both
-single and multi-container pods
+If we need to follow a log, we can do that...helpful in debugging real time issues.
+This works for both single and multi-container pods
 
 ```
 k logs $PODNAME -c container1 --follow
@@ -80,7 +81,7 @@ k logs $PODNAME -c container1 --follow
 
 CTRL+C to escape
 
-If you have a lot of pod you can select only pods you want by apply a selector
+If you have a lot of pods you can select only pods you want by applying a selector
 
 ```
 k get pods --selector app=loggingdemo
