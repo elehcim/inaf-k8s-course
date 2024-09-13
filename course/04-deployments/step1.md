@@ -104,7 +104,6 @@ Write port 30000 in Custom Ports end click Access.
 
 OR click here: [ACCESS NGINX]({{TRAFFIC_HOST1_30000}})
 
-<br>
 ## Scale your enviroment
 
 ```
