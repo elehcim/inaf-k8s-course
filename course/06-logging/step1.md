@@ -43,10 +43,10 @@ spec:
       containers:
       - name: container1
         image: busybox
-        args: [/bin/sh, -c, 'while true; do date $(hostname): container1; sleep 1; done']
+        args: [/bin/sh, -c, 'while true; do date | tr -d "\n"; echo " $(hostname) container1"; sleep 1; done']
       - name: container2
         image: busybox
-        args: [/bin/sh, -c, 'while true; do date $(hostname): container2; sleep 1; done']
+        args: [/bin/sh, -c, 'while true; do date | tr -d "\n"; echo " $(hostname) container2"; sleep 1; done']
 EOF
 ```{{exec}}
 
