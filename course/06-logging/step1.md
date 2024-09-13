@@ -1,11 +1,11 @@
 
-Creating a deployment for sinlge container pod
+Create a deployment for a single container pod
 
 ```
 k create deployment nginx --image=nginx
 ```{{exec}}
 
-Create a var that contains the name of the pod
+Store in a variable the name of the pod
 ```
 PODNAME=$(k get pods -l app=nginx -o jsonpath='{ .items[0].metadata.name }')
 ```{{exec}}
@@ -50,14 +50,15 @@ spec:
 EOF
 ```{{exec}}
 
-Create a var that contain the name of the pod
+As before, get the name of the pod and store it in a variable:
 
 ```
 PODNAME=$(kubectl get pods -l app=loggingdemo -o jsonpath='{ .items[0].metadata.name }')
 echo $PODNAME
 ```{{exec}}
 
-Lets get the logs from multi-container pod... It will default to the first container
+### Getting logs from a multi-container pod
+Lets get the logs from a multi-container pod... It will default to the first container
 
 ```
 k logs $PODNAME
@@ -96,8 +97,3 @@ kubectl logs --selector app=loggingdemo --all-containers > allpods.txt
 ```
 cat allpods.txt
 ```{{exec}}
-
-
-
-
-
