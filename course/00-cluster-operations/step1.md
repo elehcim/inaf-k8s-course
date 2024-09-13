@@ -5,7 +5,7 @@ To see the help page:
 k --help
 ```{{execute}}
 
-The main usage of `kubectl` is to interact with the API server of the cluster.
+The main purpose of `kubectl` is, in fact, to interact with the API server of the cluster.
 The API server is the main management unit of the cluster, and is responsible for all the operations that happen in the cluster.
 Let's check the cluster status:
 
